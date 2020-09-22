@@ -29,5 +29,18 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource(AdministrationPolicy::POLICY_NAMESPACE, AdministrationPolicy::class, [
             AdministrationPolicy::ACTION_DASHBOARD => AdministrationPolicy::METHOD_DASHBOARD
         ]);
+
+        /*
+         * Resource and define methods to make gate are equal
+         * Both will return user.dashboard rule
+         * $test = Gate::resource(AdministrationPolicy::POLICY_NAMESPACE, AdministrationPolicy::class, [
+            AdministrationPolicy::ACTION_DASHBOARD => AdministrationPolicy::METHOD_DASHBOARD
+        ]);
+
+        dd($test);
+
+        Gate::define(AdministrationPolicy::POLICY_NAMESPACE.'.'.AdministrationPolicy::ACTION_DASHBOARD, [AdministrationPolicy::class, AdministrationPolicy::METHOD_DASHBOARD]);
+
+        */
     }
 }
