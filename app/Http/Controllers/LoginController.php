@@ -7,12 +7,12 @@
  */
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Contracts\LoginControllerContract;
+use App\Http\Controllers\Contracts\LoginControllerInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class LoginController extends Controller implements LoginControllerContract {
+class LoginController extends Controller implements LoginControllerInterface {
 
 
     public function login(){

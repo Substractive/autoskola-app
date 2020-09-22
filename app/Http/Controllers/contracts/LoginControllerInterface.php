@@ -8,7 +8,7 @@
 
 namespace App\Http\Controllers\Contracts;
 
-interface LoginControllerContract{
+interface LoginControllerInterface{
 
     const KEY_MESSAGE_ERROR = "error";
     const KEY_MESSAGE_SUCCESS = "success";
