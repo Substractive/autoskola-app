@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Policies\AdministrationPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +26,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::resource(AdministrationPolicy::POLICY_NAMESPACE, AdministrationPolicy::class, [
+            AdministrationPolicy::ACTION_DASHBOARD => AdministrationPolicy::METHOD_DASHBOARD
+        ]);
     }
 }

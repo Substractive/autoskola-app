@@ -1,4 +1,8 @@
+<?php
 
+use App\Policies\AdministrationPolicy;
+
+?>
 
 @extends('layouts.frontend')
 @section('content')
@@ -10,7 +14,7 @@
                     <!--    <h3>Dobrodošli novi vozači</h3> -->
 
                     <h1>Brže i lakše do vozačke</h1>
-
+                    {{sprintf('can:%s.%s',AdministrationPolicy::POLICY_NAMESPACE, AdministrationPolicy::ACTION_DASHBOARD)}}
 
                     <div class="mob-icons">
                         <a class="mob-btn" href="#" role="button">

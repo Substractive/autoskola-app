@@ -22,7 +22,7 @@
                                 <i class="fas fa-user"></i>
                             </span>
                             </div>
-                            <input type="text" name="username" id="username" class="form-control input-user" value="" placeholder="Korisničko ime">
+                            <input type="text" name="email" id="email" class="form-control input-user" value="" placeholder="E-pošta">
                         </div>
 
                         <div class="input-group mb-2">

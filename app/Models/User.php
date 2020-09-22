@@ -18,7 +18,7 @@ class User extends Authenticatable implements UserInterface
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'type'
     ];
 
     /**
@@ -64,5 +64,10 @@ class User extends Authenticatable implements UserInterface
        if($this->attributes[self::KEY_TYPE] == $type)
            return true;
        return false;
+    }
+
+    public function getUserID()
+    {
+        return $this->attributes[self::KEY_ID];
     }
 }

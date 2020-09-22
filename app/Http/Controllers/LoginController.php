@@ -8,6 +8,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Contracts\LoginControllerInterface;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,11 +33,26 @@ class LoginController extends Controller implements LoginControllerInterface {
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('dashboard');
+            $user = Auth::user();
+            switch ($user->getUserType()){
+                case User::TYPE_SUPERADMIN:
+                case User::TYPE_ADMIN:
+                    return redirect()->route('administracija');
+                    break;
+
+                case User::TYPE_PUPIL:
+                    break;
+            }
+
         }else{
             return redirect()->route('login')
                 ->with(LoginController::KEY_MESSAGE_ERROR,'Podaci za prijavu nisu ispravni');
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('landing');
     }
 
 }

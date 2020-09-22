@@ -64,6 +64,8 @@
     {% partial 'header' %}
 </header>
 
+
+
 <!-- Content -->
 <section id="layout-content">
     {% page %}
