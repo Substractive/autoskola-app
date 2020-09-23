@@ -49,22 +49,22 @@ class User extends Authenticatable implements UserInterface
         $this->attributes[self::KEY_NAME] = $value;
     }
 
-    public function getUserType()
+    public function getTypeAttribute()
     {
         return $this->attributes[self::KEY_TYPE];
     }
 
-    public function setUserType($type)
+    public function setTypeAttribute($type)
     {
        $this->attributes[self::KEY_TYPE] = $type;
     }
 
-    public function getUserEmail()
+    public function getEmailAttribute()
     {
         return $this->attributes[self::KEY_EMAIL];
     }
 
-    public function setUserEmail($email)
+    public function setEmailAttribute($email)
     {
         $this->attributes[self::KEY_EMAIL] = $email;
     }
@@ -76,7 +76,7 @@ class User extends Authenticatable implements UserInterface
        return false;
     }
 
-    public function getUserID()
+    public function getIdAttribute()
     {
         return $this->attributes[self::KEY_ID];
     }

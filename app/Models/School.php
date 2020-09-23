@@ -18,79 +18,74 @@ class School extends Model implements SchoolInterface {
 
     protected $table = self::COLLECTION;
 
-    public function setAdministrator(UserInterface $user)
+    public function setAdministratorAttribute(UserInterface $user)
     {
         $this->attributes[self::KEY_ADMINISTRATOR] = $user->getUserID();
     }
 
-    public function getAdministrator()
+    public function getAdministratorAttribute()
     {
         return User::find($this->attributes[self::KEY_ADMINISTRATOR]);
     }
 
-    public function setName($name)
+    public function setNameAttribute($name)
     {
         $this->attributes[self::KEY_NAME] = $name;
     }
 
-    public function getName()
+    public function getNameAttribute()
     {
         return $this->attributes[self::KEY_NAME];
     }
 
-    public function setAddress($address)
+    public function setAddressAttribute($address)
     {
         $this->attributes[self::KEY_ADDRESS] = $address;
     }
 
-    public function getAddress()
+    public function getAddressAttribute()
     {
         return $this->attributes[self::KEY_ADDRESS];
     }
 
-    public function setEmail($email)
+    public function setEmailAttribute($email)
     {
         $this->attributes[self::KEY_EMAIL] = $email;
     }
 
-    public function getEmail()
+    public function getEmailAttribute()
     {
         return $this->attributes[self::KEY_EMAIL];
     }
 
-    public function setPhone($phone)
+    public function setPhoneAttribute($phone)
     {
         $this->attributes[self::KEY_PHONE] = $phone;
     }
 
-    public function getPhone()
+    public function getPhoneAttribute()
     {
         return $this->attributes[self::KEY_PHONE];
     }
 
-    public function setPackage(PackageInterface $package)
+    public function setPackageAttribute(PackageInterface $package)
     {
         $this->attributes[self::KEY_PACKAGE] = $package->getPackageId();
     }
 
-    public function getPackage()
+    public function getPackageAttribute()
     {
         return Package::find($this->attributes[self::KEY_PACKAGE]);
     }
 
-    public function setActive(bool $active)
+    public function setIsActiveAttribute(bool $active)
     {
         $this->attributes[self::KEY_ACTIVE] = $active;
     }
 
-    public function isActive():bool
+    public function getIsActiveAttribute():bool
     {
         return $this->attributes[self::KEY_ACTIVE];
-    }
-
-    public function getNumberOfPupils()
-    {
-        return 99;
     }
 
     public function getOibAttribute()
@@ -101,5 +96,10 @@ class School extends Model implements SchoolInterface {
     public function setOibAttribute($value)
     {
         $this->attributes[self::KEY_OIB] = $value;
+    }
+
+    public function getNumberOfPupils()
+    {
+        return 99;
     }
 }

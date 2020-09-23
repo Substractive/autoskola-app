@@ -19,12 +19,12 @@ class Package extends Model implements PackageInterface{
         self::KEY_PRICE
     ];
 
-    public function getPackageId()
+    public function getPackageIdAttribute()
     {
         return $this->attributes[self::KEY_ID];
     }
 
-    public function setPackageId($id)
+    public function setPackageIdAttribute($id)
     {
         $this->attributes[self::KEY_ID] = $id;
     }

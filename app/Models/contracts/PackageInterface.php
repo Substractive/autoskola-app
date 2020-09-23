@@ -21,7 +21,7 @@ interface PackageInterface{
     const PACKAGE_STANDARD = "standard";
     const PACKAGE_PLUS = "plus";
 
-    public function getPackageId();
-    public function setPackageId($id);
+    public function getPackageIdAttribute();
+    public function setPackageIdAttribute($id);
 
 }

@@ -24,11 +24,11 @@ interface UserInterface{
 
     public function getNameAttribute();
     public function setNameAttribute($value);
-    public function getUserID();
-    public function getUserType();
-    public function setUserType($type);
-    public function getUserEmail();
-    public function setUserEmail($email);
+    public function getIdAttribute();
+    public function getTypeAttribute();
+    public function setTypeAttribute($type);
+    public function getEmailAttribute();
+    public function setEmailAttribute($email);
     public function checkUserType($type);
 
 }

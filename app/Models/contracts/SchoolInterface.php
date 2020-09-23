@@ -27,22 +27,25 @@ interface SchoolInterface{
     const STATUS_ACTIVE = true;
     const STATUS_INACTIVE = false;
 
-
-    public function setAdministrator(UserInterface $user);
-    public function getAdministrator();
-    public function setName($name);
-    public function getName();
-    public function setAddress($address);
-    public function getAddress();
-    public function setEmail($email);
-    public function getEmail();
-    public function setPhone($phone);
-    public function getPhone();
-    public function setPackage(PackageInterface $package);
-    public function getPackage();
-    public function setActive(bool $active);
-    public function isActive();
-    public function getNumberOfPupils();
+    // Model attributes
+    public function setAdministratorAttribute(UserInterface $user);
+    public function getAdministratorAttribute();
+    public function setNameAttribute($name);
+    public function getNameAttribute();
+    public function setAddressAttribute($address);
+    public function getAddressAttribute();
+    public function setEmailAttribute($email);
+    public function getEmailAttribute();
+    public function setPhoneAttribute($phone);
+    public function getPhoneAttribute();
+    public function setPackageAttribute(PackageInterface $package);
+    public function getPackageAttribute();
     public function getOibAttribute();
     public function setOibAttribute($value);
+    public function getIsActiveAttribute();
+    public function setIsActiveAttribute(bool $value);
+    // Model helpers
+
+    public function getNumberOfPupils();
+
 }
