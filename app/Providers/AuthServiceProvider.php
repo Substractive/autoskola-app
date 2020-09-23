@@ -34,6 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::resource(SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::class, [
             SchoolPolicy::ACTION_SKOLE => SchoolPolicy::METHOD_SKOLE,
             SchoolPolicy::ACTION_SKOLA => SchoolPolicy::METHOD_SKOLA,
+            SchoolPolicy::ACTION_CREATE => SchoolPolicy::METHOD_CREATE,
         ]);
 
         /*

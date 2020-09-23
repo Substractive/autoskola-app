@@ -31,6 +31,9 @@ Route::middleware(['auth',sprintf('can:%s.%s',AdministrationPolicy::POLICY_NAMES
     ->prefix('administracija')->group(function(){
 
    Route::get('/', [AdministracijaController::class,'index'])->name('administracija');
-   Route::get('/skole',[SchoolController::class,'index'])->name('skole')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_SKOLE));
+
+   // Škola rute
+   Route::get('skole',[SchoolController::class,'index'])->name('skole')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_SKOLE));
    Route::get('skola/{'. \App\Models\Contracts\SchoolInterface::ENTITY .'}',[SchoolController::class,'skola'])->name('skola')->middleware(sprintf('can:%s.%s,%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_SKOLA, \App\Models\Contracts\SchoolInterface::ENTITY));
+   Route::get('skola/new', [SchoolController::class,'create'])->name('skola_create')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_CREATE));
 });

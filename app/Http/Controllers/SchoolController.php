@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Request;
 
 class SchoolController extends Controller{
 
-
     public function index(){
         $schools = School::where(School::KEY_ACTIVE,School::STATUS_ACTIVE)->get();
         return view('admin.school.index',[
@@ -25,6 +24,10 @@ class SchoolController extends Controller{
 
     public function skola(SchoolInterface $school){
         dd($school);
+    }
+
+    public function create(){
+        echo "create";exit;
     }
 
 }

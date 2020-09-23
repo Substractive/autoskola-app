@@ -22,10 +22,20 @@ class SchoolPolicy{
 
     const ACTION_SKOLA = 'skola';
     const ACTION_SKOLE = 'skole';
+    const ACTION_CREATE = 'create';
 
     const METHOD_SKOLA = 'skola';
     const METHOD_SKOLE = 'skole';
+    const METHOD_CREATE = 'create';
 
+
+    public function create(User $user){
+        if($user->checkUserType("superadmin")){
+            return true;
+        }
+
+        return false;
+    }
 
     public function skole(User $user){
         if($user->checkUserType("superadmin")){
@@ -36,7 +46,6 @@ class SchoolPolicy{
     }
 
     public function skola(User $user, SchoolInterface $school){
-        dd($school);
         if($user->checkUserType("admin")){
             return true;
         }

@@ -3,6 +3,12 @@
 @section('content')
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">{{__("Škole")}}</h1>
+<div class="row mb-2">
+    <div class="col-12">
+        <a href="{{route('skola_create')}}" class="btn btn-primary float-right" style="color:#fff">{{__("Nova škola")}}</a>
+    </div>
+</div>
+
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
