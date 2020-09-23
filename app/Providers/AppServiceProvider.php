@@ -21,10 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
 
-        // Bind models
-        $this->app->bind(UserInterface::class, User::class);
-        $this->app->bind(SchoolInterface::class, School::class);
-        $this->app->bind(PackageInterface::class, Package::class);
+
 
     }
 
@@ -35,6 +32,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        // Bind models
+        $this->app->bind(UserInterface::class, User::class);
+        $this->app->bind(SchoolInterface::class, School::class);
+        $this->app->bind(PackageInterface::class, Package::class);
+
+
         Schema::defaultStringLength(191);
     }
 }

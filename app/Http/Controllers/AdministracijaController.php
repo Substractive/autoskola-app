@@ -7,10 +7,13 @@
  */
 namespace App\Http\Controllers;
 
+use App\Models\Contracts\SchoolInterface;
+use Illuminate\Support\Facades\Request;
+
 class AdministracijaController extends Controller{
 
     public function index(){
-        return view('admin.home');
+        return view('admin.dashboard');
     }
 
 }

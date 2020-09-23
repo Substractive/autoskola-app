@@ -10,11 +10,13 @@ namespace App\Models;
 
 use App\Models\Contracts\PackageInterface;
 use App\Models\Contracts\UserInterface;
-use Facade\Ignition\Support\Packagist\Package;
+use App\Models\Package;
 use Illuminate\Database\Eloquent\Model;
-use SchoolInterface;
+use App\Models\Contracts\SchoolInterface;
 
 class School extends Model implements SchoolInterface {
+
+    protected $table = self::COLLECTION;
 
     public function setAdministrator(UserInterface $user)
     {
@@ -84,5 +86,20 @@ class School extends Model implements SchoolInterface {
     public function isActive():bool
     {
         return $this->attributes[self::KEY_ACTIVE];
+    }
+
+    public function getNumberOfPupils()
+    {
+        return 99;
+    }
+
+    public function getOibAttribute()
+    {
+        return $this->attributes[self::KEY_OIB];
+    }
+
+    public function setOibAttribute($value)
+    {
+        $this->attributes[self::KEY_OIB] = $value;
     }
 }

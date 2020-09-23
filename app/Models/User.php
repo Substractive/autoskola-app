@@ -39,6 +39,16 @@ class User extends Authenticatable implements UserInterface
         'email_verified_at' => 'datetime',
     ];
 
+    public function getNameAttribute()
+    {
+        return $this->attributes[self::KEY_NAME];
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes[self::KEY_NAME] = $value;
+    }
+
     public function getUserType()
     {
         return $this->attributes[self::KEY_TYPE];

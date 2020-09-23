@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Contracts\SchoolInterface;
 use App\Policies\AdministrationPolicy;
+use App\Policies\SchoolPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,9 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
-    ];
+    protected $policies = [];
 
     /**
      * Register any authentication / authorization services.
@@ -28,6 +28,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::resource(AdministrationPolicy::POLICY_NAMESPACE, AdministrationPolicy::class, [
             AdministrationPolicy::ACTION_DASHBOARD => AdministrationPolicy::METHOD_DASHBOARD
+        ]);
+
+
+        Gate::resource(SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::class, [
+            SchoolPolicy::ACTION_SKOLE => SchoolPolicy::METHOD_SKOLE,
+            SchoolPolicy::ACTION_SKOLA => SchoolPolicy::METHOD_SKOLA,
         ]);
 
         /*

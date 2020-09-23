@@ -1,3 +1,9 @@
+<?php
+
+use App\Policies\AdministrationPolicy;
+use App\Policies\SchoolPolicy;
+?>
+
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -6,7 +12,10 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+
+        <div class="sidebar-brand-text mx-3">
+            {{\Illuminate\Support\Facades\Auth::user()->getNameAttribute()}}
+        </div>
     </a>
 
     <!-- Divider -->
@@ -14,9 +23,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('administracija')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>{{__("NADZORNA PLOČA")}}</span></a>
     </li>
 
     <!-- Divider -->
@@ -24,23 +33,19 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        {{__("Škola")}}
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
+    <?php if(Gate::allows(SchoolPolicy::POLICY_NAMESPACE. '.' . SchoolPolicy::ACTION_SKOLE)): ?>
+        @include('admin.menu.skole')
+    <?php endif; ?>
+
+    @if(\Illuminate\Support\Facades\Auth::user()->checkUserType("admin"))
+    <?php if(Gate::allows(SchoolPolicy::POLICY_NAMESPACE. '.' . SchoolPolicy::ACTION_SKOLA)): ?>
+        @include('admin.menu.skola')
+    <?php endif; ?>
+    @endif
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">

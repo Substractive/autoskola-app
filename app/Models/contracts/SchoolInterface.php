@@ -8,8 +8,6 @@
 
 namespace App\Models\Contracts;
 
-use App\Models\Contracts\PackageInterface;
-use App\Models\Contracts\UserInterface;
 
 interface SchoolInterface{
 
@@ -26,6 +24,9 @@ interface SchoolInterface{
     const KEY_PACKAGE = "package_id";
     const KEY_ACTIVE = "active";
 
+    const STATUS_ACTIVE = true;
+    const STATUS_INACTIVE = false;
+
 
     public function setAdministrator(UserInterface $user);
     public function getAdministrator();
@@ -41,4 +42,7 @@ interface SchoolInterface{
     public function getPackage();
     public function setActive(bool $active);
     public function isActive();
+    public function getNumberOfPupils();
+    public function getOibAttribute();
+    public function setOibAttribute($value);
 }

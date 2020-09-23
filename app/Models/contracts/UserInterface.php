@@ -22,6 +22,8 @@ interface UserInterface{
     const TYPE_PUPIL = "pupil";
 
 
+    public function getNameAttribute();
+    public function setNameAttribute($value);
     public function getUserID();
     public function getUserType();
     public function setUserType($type);
