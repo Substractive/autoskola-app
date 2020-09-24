@@ -16,6 +16,7 @@ interface UserInterface{
     const KEY_NAME = "name";
     const KEY_EMAIL = "email";
     const KEY_TYPE = "type";
+    const KEY_PASSWORD = "password";
 
     const TYPE_SUPERADMIN = "superadmin";
     const TYPE_ADMIN = "admin";

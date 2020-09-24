@@ -13,7 +13,7 @@ use App\Models\Contracts\SchoolInterface;
 use App\Models\Contracts\UserInterface;
 use App\Models\School;
 use App\Models\User;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class AdministratorController extends Controller{
 
@@ -25,12 +25,16 @@ class AdministratorController extends Controller{
     }
 
     public function create(){
-        return "admin create";
         return view('admin.administrators.create');
     }
 
     public function update(UserInterface $admin){
         return view('admin.administrators.update');
+    }
+
+    public function store(Request $request){
+        $administrator_data = $request->input("administrator");
+        dd($administrator_data);
     }
 
 }

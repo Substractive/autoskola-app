@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">{{__("Nova Škola")}}</h1>
+<div class="row mb-2">
+    <div class="col-12">
+        <a href="{{route('skole')}}" class="btn btn-primary" style="color:#fff"> <i class="fa fa-arrow-left"></i>  {{__("Škole")}}</a>
+    </div>
+</div>
+
 <div class="panel panel-default">
     <div class="panel-heading">
         Basic Form Elements
