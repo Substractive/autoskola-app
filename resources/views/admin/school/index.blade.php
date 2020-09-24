@@ -31,12 +31,19 @@
                 <tbody>
                 @foreach($schools as $school)
                 <tr>
-                    <td>{{$school->getName()}}</td>
+                    <td>{{$school->getNameAttribute()}}</td>
                     <td>{{$school->getOibAttribute()}}</td>
                     <td>{{$school->getNumberOfPupils()}}</td>
-                    <td>{{$school->getPhone()}}</td>
-                    <td>{{$school->getPackage()->name}}</td>
-                    <td></td>
+                    <td>{{$school->getPhoneAttribute()}}</td>
+                    <td>{{$school->getPackageAttribute()->name}}</td>
+                    <td>
+                       <a href="{{route('school',$school->getIdAttribute())}}" class="btn btn-primary btn-sm shadow-sm" role="button"><i class="fas fa-eye text-gray-300"></i></a>
+                        @if($school->getIsActiveAttribute())
+                        <a title="Delete" href="{{route('school_deactivate',$school->getIdAttribute())}}" class="btn btn-danger btn-sm shadow-sm" role="button"><i class="fas fa-toggle-off text-gray-300"></i></a>
+                        @else
+                        <a title="Delete" href="{{route('school_deactivate',$school->getIdAttribute())}}" class="btn btn-danger btn-sm shadow-sm" role="button"><i class="fas fa-toggle-off text-gray-300"></i></a>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
                 </tbody>

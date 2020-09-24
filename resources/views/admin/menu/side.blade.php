@@ -36,6 +36,14 @@ use App\Policies\SchoolPolicy;
         {{__("Škola")}}
     </div>
 
+    <?php if(Gate::allows(\App\Policies\UserPolicy::POLICY_NAMESPACE. '.' . \App\Policies\UserPolicy::ACTION_ADMIN)): ?>
+    @include('admin.menu.users.administrator')
+    <?php endif; ?>
+
+    <?php if(Gate::allows(\App\Policies\UserPolicy::POLICY_NAMESPACE. '.' . \App\Policies\UserPolicy::ACTION_PUPIL)): ?>
+    @include('admin.menu.users.pupil')
+    <?php endif; ?>
+
     <!-- Nav Item - Pages Collapse Menu -->
     <?php if(Gate::allows(SchoolPolicy::POLICY_NAMESPACE. '.' . SchoolPolicy::ACTION_SKOLE)): ?>
         @include('admin.menu.skole')

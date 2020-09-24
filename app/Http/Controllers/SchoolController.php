@@ -26,8 +26,16 @@ class SchoolController extends Controller{
         dd($school);
     }
 
+    public function deactivate(SchoolInterface $school){
+        dd($school);
+    }
+
     public function create(){
-        echo "create";exit;
+        return view('admin.school.create');
+    }
+
+    public function update(SchoolInterface $school){
+        dd($school);
     }
 
 }

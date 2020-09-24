@@ -23,10 +23,12 @@ class SchoolPolicy{
     const ACTION_SKOLA = 'skola';
     const ACTION_SKOLE = 'skole';
     const ACTION_CREATE = 'create';
+    const ACTION_DEACTIVATE = 'deactivate';
 
     const METHOD_SKOLA = 'skola';
     const METHOD_SKOLE = 'skole';
     const METHOD_CREATE = 'create';
+    const METHOD_DEACTIVATE = 'deactivate';
 
 
     public function create(User $user){
@@ -46,9 +48,17 @@ class SchoolPolicy{
     }
 
     public function skola(User $user, SchoolInterface $school){
-        if($user->checkUserType("admin")){
+        if($user->checkUserType("admin") || $user->checkUserType("superadmin")){
             return true;
         }
+        return false;
+    }
+
+    public function deactivate(User $user, SchoolInterface $school){
+        if($user->checkUserType("superadmin")){
+            return true;
+        }
+
         return false;
     }
 }

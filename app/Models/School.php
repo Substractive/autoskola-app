@@ -18,6 +18,10 @@ class School extends Model implements SchoolInterface {
 
     protected $table = self::COLLECTION;
 
+    public function getIdAttribute(){
+        return $this->attributes[self::KEY_ID];
+    }
+
     public function setAdministratorAttribute(UserInterface $user)
     {
         $this->attributes[self::KEY_ADMINISTRATOR] = $user->getUserID();

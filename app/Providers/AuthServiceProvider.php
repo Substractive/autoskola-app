@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Contracts\SchoolInterface;
 use App\Policies\AdministrationPolicy;
 use App\Policies\SchoolPolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -35,6 +36,14 @@ class AuthServiceProvider extends ServiceProvider
             SchoolPolicy::ACTION_SKOLE => SchoolPolicy::METHOD_SKOLE,
             SchoolPolicy::ACTION_SKOLA => SchoolPolicy::METHOD_SKOLA,
             SchoolPolicy::ACTION_CREATE => SchoolPolicy::METHOD_CREATE,
+            SchoolPolicy::ACTION_DEACTIVATE => SchoolPolicy::METHOD_DEACTIVATE,
+
+        ]);
+
+        Gate::resource(UserPolicy::POLICY_NAMESPACE, UserPolicy::class, [
+            UserPolicy::ACTION_ADMIN => UserPolicy::METHOD_ADMIN,
+            UserPolicy::ACTION_PUPIL => UserPolicy::METHOD_PUPIL,
+            UserPolicy::ACTION_ADMIN_UPDATE => UserPolicy::METHOD_ADMIN_UPDATE,
         ]);
 
         /*

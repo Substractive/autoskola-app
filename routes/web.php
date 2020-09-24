@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\PupilController;
+use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SchoolController;
@@ -28,12 +31,28 @@ Route::get('ispiti')->name('ispiti');
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 Route::middleware(['auth',sprintf('can:%s.%s',AdministrationPolicy::POLICY_NAMESPACE, AdministrationPolicy::ACTION_DASHBOARD)])
-    ->prefix('administracija')->group(function(){
+    ->prefix('administration')->group(function(){
 
    Route::get('/', [AdministracijaController::class,'index'])->name('administracija');
 
-   // Škola rute
-   Route::get('skole',[SchoolController::class,'index'])->name('skole')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_SKOLE));
-   Route::get('skola/{'. \App\Models\Contracts\SchoolInterface::ENTITY .'}',[SchoolController::class,'skola'])->name('skola')->middleware(sprintf('can:%s.%s,%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_SKOLA, \App\Models\Contracts\SchoolInterface::ENTITY));
-   Route::get('skola/new', [SchoolController::class,'create'])->name('skola_create')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_CREATE));
+   Route::prefix("school")->group(function(){
+       // Škola rute
+       Route::get('/',[SchoolController::class,'index'])->name('skole')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_SKOLE));
+       Route::get('/create/', [SchoolController::class,'create'])->name('skola_create')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_CREATE));
+       Route::get('/update/{'. \App\Models\Contracts\SchoolInterface::ENTITY .'}',[SchoolController::class,'update'])->name('school')->middleware(sprintf('can:%s.%s,%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_SKOLA, \App\Models\Contracts\SchoolInterface::ENTITY));
+       Route::get('/deactivate/{'. \App\Models\Contracts\SchoolInterface::ENTITY .'}',[SchoolController::class,'deactivate'])->name('school_deactivate')->middleware(sprintf('can:%s.%s,%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_DEACTIVATE, \App\Models\Contracts\SchoolInterface::ENTITY));
+   });
+
+   Route::prefix('administrator')->group(function(){
+       Route::get('/',[AdministratorController::class,'index'])->name('administrator')->middleware(sprintf('can:%s.%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_ADMIN));
+       Route::get('/create/', [AdministratorController::class,'create'])->name('administrator_create')->middleware(sprintf('can:%s.%s',SchoolPolicy::POLICY_NAMESPACE, SchoolPolicy::ACTION_CREATE));
+       Route::get('/update/{'. \App\Models\Contracts\UserInterface::ENTITY .'}',[AdministratorController::class,'update'])->name('admin_update')->middleware(sprintf('can:%s.%s,%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_ADMIN_UPDATE, \App\Models\Contracts\UserInterface::ENTITY));
+
+
+   });
+
+    Route::prefix('pupil')->group(function(){
+        Route::get('/',[PupilController::class,'index'])->name('pupil')->middleware(sprintf('can:%s.%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_PUPIL));
+
+    });
 });

@@ -34,7 +34,7 @@ class LoginController extends Controller implements LoginControllerInterface {
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             $user = Auth::user();
-            switch ($user->getUserType()){
+            switch ($user->getTypeAttribute()){
                 case User::TYPE_SUPERADMIN:
                 case User::TYPE_ADMIN:
                     return redirect()->route('administracija');
