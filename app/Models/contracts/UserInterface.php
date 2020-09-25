@@ -30,6 +30,7 @@ interface UserInterface{
     public function setTypeAttribute($type);
     public function getEmailAttribute();
     public function setEmailAttribute($email);
+    public function setPaswordAttribute($pass);
     public function checkUserType($type);
 
 }

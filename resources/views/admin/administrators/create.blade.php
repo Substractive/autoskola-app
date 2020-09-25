@@ -12,7 +12,7 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-12">
-                    <form role="form" method="post" action="{{route('create_admin')}}">
+                    <form role="form" method="post" action="{{route('store_admin')}}">
                         @csrf
                         <div class="form-group">
                             <label>Ime i prezime</label>
@@ -26,6 +26,17 @@
                             <label>Lozinka</label>
                             <input name="administrator[{{\App\Models\Contracts\UserInterface::KEY_PASSWORD}}]" class="form-control" placeholder="Enter text">
                         </div>
+
+                        <div class="form-group">
+                            <label>Dodaj na školu</label>
+                            <select name="school" class="form-control">
+                                <option selected value="0">{{__("Škole")}}</option>
+                                @foreach($schools as $school)
+                                    <option value="{{$school->getIdAttribute()}}">{{$school->getNameAttribute()}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <button type="submit" class="btn btn-primary btn-block">Spremi</button>
                         <button type="reset" class="btn btn-danger btn-block">Reset</button>
                     </form>

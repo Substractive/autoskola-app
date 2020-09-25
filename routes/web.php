@@ -47,7 +47,7 @@ Route::middleware(['auth',sprintf('can:%s.%s',AdministrationPolicy::POLICY_NAMES
        Route::get('/',[AdministratorController::class,'index'])->name('administrator')->middleware(sprintf('can:%s.%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_ADMIN));
        Route::get('/create/', [AdministratorController::class,'create'])->name('administrator_create')->middleware(sprintf('can:%s.%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_ADMIN));
        Route::get('/update/{'. \App\Models\Contracts\UserInterface::ENTITY .'}',[AdministratorController::class,'update'])->name('admin_update')->middleware(sprintf('can:%s.%s,%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_ADMIN_UPDATE, \App\Models\Contracts\UserInterface::ENTITY));
-       Route::post('/store',[AdministratorController::class,'store'])->name("create_admin")->middleware(sprintf('can:%s.%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_ADMIN));
+       Route::post('/store',[AdministratorController::class,'store'])->name("store_admin")->middleware(sprintf('can:%s.%s',UserPolicy::POLICY_NAMESPACE, UserPolicy::ACTION_ADMIN));
 
 
    });
