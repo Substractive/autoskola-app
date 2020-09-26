@@ -24,7 +24,7 @@ class School extends Model implements SchoolInterface {
 
     public function setAdministratorAttribute(UserInterface $user)
     {
-        $this->attributes[self::KEY_ADMINISTRATOR] = $user->getUserID();
+        $this->attributes[self::KEY_ADMINISTRATOR] = $user->getIdAttribute();
     }
 
     public function getAdministratorAttribute()
@@ -74,7 +74,7 @@ class School extends Model implements SchoolInterface {
 
     public function setPackageAttribute(PackageInterface $package)
     {
-        $this->attributes[self::KEY_PACKAGE] = $package->getPackageId();
+        $this->attributes[self::KEY_PACKAGE] = $package->getPackageIdAttribute();
     }
 
     public function getPackageAttribute()

@@ -27,6 +27,8 @@ interface SchoolInterface{
     const STATUS_ACTIVE = true;
     const STATUS_INACTIVE = false;
 
+
+
     // Model attributes
     public function setAdministratorAttribute(UserInterface $user);
     public function getAdministratorAttribute();

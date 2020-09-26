@@ -29,7 +29,7 @@
 
                         <div class="form-group">
                             <label>Dodaj na školu</label>
-                            <select name="school" class="form-control">
+                            <select name="school[{{\App\Models\Contracts\SchoolInterface::KEY_ID}}]" class="form-control">
                                 <option selected value="0">{{__("Škole")}}</option>
                                 @foreach($schools as $school)
                                     <option value="{{$school->getIdAttribute()}}">{{$school->getNameAttribute()}}</option>
