@@ -29,6 +29,8 @@ class School extends Model implements SchoolInterface {
 
     public function getAdministratorAttribute()
     {
+        // TODO: getAdministrators, as from now school can have multiple administrators
+        // TODO: Remove administrator key from the school table, as there is now pivot table school_administrators
         return User::find($this->attributes[self::KEY_ADMINISTRATOR]);
     }
 

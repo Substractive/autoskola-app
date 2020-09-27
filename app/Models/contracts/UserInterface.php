@@ -20,6 +20,7 @@ interface UserInterface{
 
     const TYPE_SUPERADMIN = "superadmin";
     const TYPE_ADMIN = "admin";
+    const TYPE_EMPLOYEE = "employee";
     const TYPE_PUPIL = "pupil";
 
 
